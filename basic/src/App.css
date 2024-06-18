@@ -37,3 +37,49 @@
   text-transform: uppercase;
   font-weight: bold;
 }
+
+.container {
+  margin: auto;
+}
+
+.banner {
+  text-align: center;
+  margin: 2rem;
+  font-size: 2rem;
+  background-color: gold;
+  font-weight: bold;
+}
+
+.counter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+  padding: 1rem 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  border: 2px solid orange;
+}
+
+.counter:hover {
+  background-color: rgb(243, 247, 200);
+}
+
+.counter__number {
+  font-size: 7rem;
+}
+
+.counter__button {
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  background-color: yellowgreen;
+  border: 2px solid;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+
+.counter__total {
+  font-size: 1rem;
+  margin-left: -1.5rem;
+}

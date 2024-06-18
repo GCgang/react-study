@@ -1,6 +1,6 @@
-import './App.css'
+import './App.css';
 import Avatar from './components/Avatar';
-import Profile from './components/Profile'
+import Profile from './components/Profile';
 
 
 export default function AppProfile() {
