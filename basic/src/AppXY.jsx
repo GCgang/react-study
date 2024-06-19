@@ -3,7 +3,6 @@ import './AppXY.css';
 
 export default function AppXY() {
     const [position, setPosition] = React.useState({x: 0, y: 0, z:0});
-    const pointer = document.querySelector('.pointer');
     const onPointerMove = (e) => {
         setPosition((prev) => ({x: e.clientX, y: e.clientY}));
 
