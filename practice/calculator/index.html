@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css"
+    />
+    <style>
+      body {
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+      }
+      .result {
+        display: block;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    function NumberInputBtn ({id, placeholder}) {
+      return (
+          <input
+            className="number-input"
+            id={id}
+            type="number"
+            placeholder={placeholder}
+          />
+      );
+    }
+    function App() {
+      const selectList = ["👉🏻 Select operation", "+", "-", "/", "*"];
+      const [operator, setOperator] = React.useState("");
+      const [resultValue, setResultValue] = React.useState("");
+
+      const onChange = () => {
+        const value = parseInt(event.target.value);
+        setOperator(value === 0 ? "" : selectList[value]);
+      }
+      const onClick = () => {
+        const firstNumber = parseFloat(document.querySelector('#first-number')?.value);
+        const secondNumber = parseFloat(document.querySelector('#second-number')?.value);
+  
+        if (isNaN(firstNumber) || isNaN(secondNumber) && secondNumber !== 0) {
+          setResultValue("숫자를 입력해주세요 🙏");
+          return ;
+        }
+        let result;
+        switch(operator) {
+          case "+":
+            result = firstNumber + secondNumber;
+            break;
+          case "-":
+            result = firstNumber - secondNumber;
+            break;
+          case "*":
+            result = firstNumber * secondNumber;
+            break;
+          case "/":
+            result = secondNumber === 0 ? "❗️ 0으로 나눌 수 없습니다 ❗️" : firstNumber / secondNumber;
+            break;
+          default:
+            result = "연산자를 골라주세요 🙏";
+        }
+        setResultValue(typeof result === "string" ? result : `The result is: ${result}`);
+      }
+
+      return (
+        <div className="container">
+          <h1>🔥 Calculator 🔥</h1>
+          <NumberInputBtn id="first-number" placeholder="👉🏻 Write a number..."/>
+          <NumberInputBtn id="second-number" placeholder="👉🏻 And another one..."/>
+          <select name="operators" onChange={onChange}>
+            {selectList.map((item, index) =>
+              <option value={index}>
+                {item}
+              </option>
+            )}
+          </select>
+          <button onClick={onClick}>Calulate</button>
+          <output className="result">{resultValue}</output>
+        </div>
+      );
+    }
+    const root = document.getElementById("root");
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
