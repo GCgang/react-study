@@ -1,47 +1,20 @@
-import React, { useState, useEffect } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import NotFound from "./pages/NotFound";
+import Home from "./pages/Home";
+import Details from './pages/Details';
 
-// https://yts.mx/api/v2/list_movies.json?minimum_rating=8.5&sort_by=year
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/movies/:movieId",
+    element: <Details />,
+  },
+]);
 
-export default function AppMovie() {
-  const [loaded, setLoaded] = useState(false);
-  const [movies, setMovies] = useState([]);
-
-  const getMovies = async () => {
-    const json = await (
-      await fetch(
-        "https://yts.mx/api/v2/list_movies.json?minimum_rating=8.5&sort_by=year"
-      )
-    ).json();
-    setMovies(json.data.movies);
-    setLoaded(true);
-  };
-  useEffect(() => {
-    getMovies();
-  }, []);
-
-  return (
-    <div>
-      <h1>Movies</h1>
-      <div>
-        {!loaded ? (
-          <h2>Loading...</h2>
-        ) : (
-          <div>
-            {movies.map((movie) => (
-              <div key={movie.id}>
-                <img src={movie.medium_cover_image} alt="영화 이미지" />
-                <h2>{movie.title}</h2>
-                <p>{movie.summary}</p>
-                <ul>
-                  {movie.genres.map((g, index) => (
-                    <li key={index}>{g}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-    </div>
-  );
+export default function () {
+  return <RouterProvider router={router} />;
 }
