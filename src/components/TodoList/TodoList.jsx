@@ -17,7 +17,7 @@ export default function ToDoList({ filter }) {
       <ul className={styles.list}>
         {filterd.map((todo) => (
           <Todo
-            id={todo.id}
+            key={todo.id}
             todo={todo}
             onUpdate={handleUpdate}
             onDelete={handleDelete}
