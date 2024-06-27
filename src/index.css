@@ -32,12 +32,13 @@ body {
   height: 60%;
   max-width: 500px;
   background-color: var(--color-bg-dark);
+  overflow: hidden;
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
   -webkit-box-shadow: 11px 11px 5px -3px rgba(0, 0, 0, 0.32);
   -moz-box-shadow: 11px 11px 5px -3px rgba(0, 0, 0, 0.32);
-  box-shadow: 11px 11px 5px -3px rgba(0, 0, 0, 0.32); 
+  box-shadow: 11px 11px 5px -3px rgba(0, 0, 0, 0.32);
 }
 
 code {
@@ -48,4 +49,9 @@ code {
 ul {
   list-style: none;
   padding-left: 0;
+}
+
+button {
+  outline: none;
+  border: none;
 }
