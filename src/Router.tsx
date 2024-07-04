@@ -1,0 +1,25 @@
+import { createBrowserRouter } from 'react-router-dom';
+import App from './App';
+import Coins from './screens/Coins';
+import Coin from './screens/Coin';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    children: [
+      {
+        path: '',
+        element: <Coins />,
+        children: [
+          {
+            path: 'coin/:id',
+            element: <Coin />,
+          },
+        ],
+      },
+    ],
+  },
+]);
+
+export default router;
