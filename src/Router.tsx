@@ -11,12 +11,10 @@ const router = createBrowserRouter([
       {
         path: '',
         element: <Coins />,
-        children: [
-          {
-            path: 'coin/:id',
-            element: <Coin />,
-          },
-        ],
+      },
+      {
+        path: ':id',
+        element: <Coin />,
       },
     ],
   },
