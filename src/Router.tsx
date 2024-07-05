@@ -2,6 +2,8 @@ import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
 import Coins from './screens/Coins';
 import Coin from './screens/Coin';
+import Chart from './screens/Chart';
+import Price from './screens/Price';
 
 const router = createBrowserRouter([
   {
@@ -15,6 +17,16 @@ const router = createBrowserRouter([
       {
         path: ':id',
         element: <Coin />,
+        children: [
+          {
+            path: 'chart',
+            element: <Chart />,
+          },
+          {
+            path: 'price',
+            element: <Price />,
+          },
+        ],
       },
     ],
   },
