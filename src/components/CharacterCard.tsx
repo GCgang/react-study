@@ -1,14 +1,9 @@
-import { ICharacter } from '../types/characterType';
+import { ICharacterCard } from '../types/characterType';
 
-export default function CharacterCard({
-  character,
-}: {
-  character: ICharacter;
-}) {
-  const { name, imageUrl } = character;
+export default function CharacterCard({ name, imageUrl }: ICharacterCard) {
   return (
     <div>
-      <img src={imageUrl} />
+      <img src={imageUrl} alt="disney character" />
       <h2>{name}</h2>
     </div>
   );
