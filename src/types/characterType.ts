@@ -4,9 +4,7 @@ export interface ICharacter {
   imageUrl: string;
 }
 
-export interface ICharacterList {
-  character: ICharacter[];
-}
+export type ICharacterList = ICharacter[];
 
 export interface ICharacterDetail extends ICharacter {
   films: string[];
