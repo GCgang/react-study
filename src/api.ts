@@ -16,3 +16,11 @@ export async function fetchCoinPrice(id: string | undefined) {
   const json = await response.json();
   return json;
 }
+
+export async function fetchCoinHistory(id: string | undefined) {
+  const response = await fetch(
+    `https://ohlcv-api.nomadcoders.workers.dev?coinId=${id}`
+  );
+  const json = await response.json();
+  return json;
+}

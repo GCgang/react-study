@@ -8,6 +8,7 @@ import {
 import styled from 'styled-components';
 import { useQuery } from '@tanstack/react-query';
 import { fetchCoinData, fetchCoinPrice } from '../api';
+import { Helmet } from 'react-helmet';
 
 const Container = styled.div`
   padding: 0px 20px;
@@ -152,10 +153,16 @@ export default function Coin() {
   const { isLoading: tickersLoading, data: tickersData } = useQuery<ITickers>({
     queryKey: ['tickers', id],
     queryFn: () => fetchCoinPrice(id),
+    refetchInterval: 10000,
   });
   const loading = infoLoading || tickersLoading;
   return (
     <Container>
+      <Helmet>
+        <title>
+          {state?.name ? state.name : loading ? 'Loading...' : infoData?.name}
+        </title>
+      </Helmet>
       <Header>
         <Title>
           {state?.name ? state.name : loading ? 'Loading...' : infoData?.name}
@@ -175,8 +182,8 @@ export default function Coin() {
               <span>${infoData?.symbol}</span>
             </OverviewItem>
             <OverviewItem>
-              <span>Open Source:</span>
-              <span>{infoData?.open_source ? 'Yes' : 'No'}</span>
+              <span>Price:</span>
+              <span>{tickersData?.quotes.USD.price.toFixed(3)}</span>
             </OverviewItem>
           </Overview>
           <Description>{infoData?.description}</Description>
@@ -198,7 +205,7 @@ export default function Coin() {
               <Link to={`/${id}/price`}>Price</Link>
             </Tab>
           </Tabs>
-          <Outlet />
+          <Outlet context={{ id }} />
         </>
       )}
     </Container>
