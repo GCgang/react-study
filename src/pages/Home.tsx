@@ -16,7 +16,7 @@ export default function Home() {
     <Container>
       <Title>Disney Characters</Title>
       {isLoading ? (
-        <div>Loading...</div>
+        <Loader>Loading...</Loader>
       ) : (
         <CharacterList>
           {characters?.map(({ id, name, imageUrl }) => (
@@ -41,6 +41,10 @@ const Container = styled.div`
 const Title = styled.h2`
   font-size: 2rem;
   margin-bottom: 20px;
+`;
+
+const Loader = styled.div`
+  font-size: 1.5rem;
 `;
 
 const CharacterList = styled.ul`

@@ -4,6 +4,7 @@ import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import { fetchCharacterDetail } from '../utils/api';
 import { ICharacterCard, ICharacterDetail } from '../types/characterType';
 import CharacterCard from '../components/CharacterCard';
+import BackButton from '../components/BackButton';
 import styled from 'styled-components';
 
 export default function Character() {
@@ -27,9 +28,10 @@ export default function Character() {
 
   return (
     <Container>
+      <BackButton />
       <CharacterCard name={state.name} imageUrl={state.imageUrl} />
       {isLoading ? (
-        <div>Loading...</div>
+        <Loader>Loading...</Loader>
       ) : (
         <Filmlist>
           {characterDetail?.films.map((film) => (
@@ -45,6 +47,10 @@ const Container = styled.div`
   text-align: center;
   padding: 20px;
   max-width: 800px;
+`;
+
+const Loader = styled.div`
+  font-size: 1rem;
 `;
 
 const Filmlist = styled.ul`
