@@ -12,26 +12,34 @@ export default function Character() {
   const state = useLocation().state as ICharacterCard;
   const navigate = useNavigate();
 
-  const { isLoading, data: characterDetail } = useQuery<ICharacterDetail>({
+  const {
+    isLoading,
+    isError,
+    data: characterDetail,
+  } = useQuery<ICharacterDetail>({
     queryKey: [id],
     queryFn: () => fetchCharacterDetail(id),
     staleTime: 5 * 60 * 1000, // 5분 동안 fresh 상태 유지
   });
 
-  // url로 바로 접근 시 redirect
+  // url로 id에 바로 접근 시 Home으로 redirect
   useEffect(() => {
     if (!state) {
       navigate('/');
     }
   }, [state, navigate]);
+
   if (!state) return null;
 
   return (
     <Container>
       <BackButton />
       <CharacterCard name={state.name} imageUrl={state.imageUrl} />
+
       {isLoading ? (
         <Loader>Loading...</Loader>
+      ) : isError ? (
+        <Error>404 Not Found</Error>
       ) : (
         <Filmlist>
           {characterDetail?.films.map((film) => (
@@ -50,7 +58,13 @@ const Container = styled.div`
 `;
 
 const Loader = styled.div`
-  font-size: 1rem;
+  margin-top: 30px;
+  font-size: 2rem;
+`;
+
+const Error = styled.div`
+  margin-top: 30px;
+  font-size: 2rem;
 `;
 
 const Filmlist = styled.ul`

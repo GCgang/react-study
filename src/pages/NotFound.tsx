@@ -1,3 +1,9 @@
+import styled from 'styled-components';
+
 export default function NotFound() {
-  return <div></div>;
+  return <Error>404 NotFound</Error>;
 }
+
+const Error = styled.div`
+  font-size: 3rem;
+`;

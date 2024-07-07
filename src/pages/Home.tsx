@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { fetchCharactersList } from '../utils/api';
 import { ICharacterList } from '../types/characterType';
@@ -6,11 +7,25 @@ import CharacterCard from '../components/CharacterCard';
 import styled from 'styled-components';
 
 export default function Home() {
-  const { isLoading, data: characters } = useQuery<ICharacterList>({
+  const navigate = useNavigate();
+
+  const {
+    isLoading,
+    isError,
+    data: characters,
+  } = useQuery<ICharacterList>({
     queryKey: ['characters'],
     queryFn: fetchCharactersList,
     staleTime: 5 * 60 * 1000, // 5분 동안 fresh 상태 유지
   });
+
+  useEffect(() => {
+    if (isError) {
+      navigate('/not-found');
+    }
+  }, [isError, navigate]);
+
+  if (isError) return null;
 
   return (
     <Container>
