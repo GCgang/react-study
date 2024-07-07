@@ -4,6 +4,7 @@ import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import { fetchCharacterDetail } from '../utils/api';
 import { ICharacterCard, ICharacterDetail } from '../types/characterType';
 import CharacterCard from '../components/CharacterCard';
+import styled from 'styled-components';
 
 export default function Character() {
   const { id } = useParams<{ id: string }>();
@@ -25,17 +26,42 @@ export default function Character() {
   if (!state) return null;
 
   return (
-    <div>
+    <Container>
       <CharacterCard name={state.name} imageUrl={state.imageUrl} />
       {isLoading ? (
         <div>Loading...</div>
       ) : (
-        <ul>
+        <Filmlist>
           {characterDetail?.films.map((film) => (
-            <li key={film}>{film}</li>
+            <FilmItem key={film}>{film}</FilmItem>
           ))}
-        </ul>
+        </Filmlist>
       )}
-    </div>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  text-align: center;
+  padding: 20px;
+  max-width: 800px;
+`;
+
+const Filmlist = styled.ul`
+  margin-top: 20px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+`;
+
+const FilmItem = styled.li`
+  background-color: white;
+  color: black;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 10px;
+  display: inline-block;
+  margin-right: 10px;
+`;

@@ -15,6 +15,7 @@ function App() {
 export default App;
 
 const GlobalStyle = createGlobalStyle`
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -42,8 +43,15 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background-color: ${(props) => props.theme.bgColor};
+	color: ${(props) => props.theme.textColor};
+	font-family: "Dancing Script", cursive;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
 }
-ol, ul {
+ol, ul, li {
 	list-style: none;
 }
 blockquote, q {
@@ -55,8 +63,12 @@ q:before, q:after {
 	content: none;
 }
 table {
+  font-family: "Dancing Script", cursive;
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
+a {
+	color: inherit;
+  text-decoration: none;
+}
 `;
