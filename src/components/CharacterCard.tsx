@@ -12,7 +12,7 @@ export default function CharacterCard({ name, imageUrl }: ICharacterCard) {
 
 const Card = styled.div`
   width: 100%;
-  text-align; center;
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
