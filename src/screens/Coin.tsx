@@ -73,7 +73,6 @@ const Tab = styled.span<{ isActive: boolean }>`
   border-radius: 10px;
   color: ${(props) =>
     props.isActive ? props.theme.accentColor : props.theme.textColor};
-  }
   a {
     padding: 7px 0px;
     display: block;
