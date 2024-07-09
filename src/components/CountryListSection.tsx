@@ -21,7 +21,7 @@ export default function CountryListSection({
       <h2>{title}</h2>
       <ul>
         {countries
-          .filter((country) => country.status !== status)
+          .filter((country) => country.status === status)
           .map((country: ICountry) => (
             <li key={country.name}>
               <CountryItem country={country} />
