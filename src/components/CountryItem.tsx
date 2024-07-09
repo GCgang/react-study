@@ -3,13 +3,13 @@ import {
   eCountryStatus,
   ICountry,
 } from '../state/countiresState';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 
 interface ICountryItem {
   country: ICountry;
 }
 export default function CountryItem({ country }: ICountryItem) {
-  const [countries, setContries] = useRecoilState(countiresState);
+  const setContries = useSetRecoilState(countiresState);
 
   const handleStatusChange = (newStatus: eCountryStatus) => {
     setContries((oldCountries) =>
@@ -20,7 +20,7 @@ export default function CountryItem({ country }: ICountryItem) {
   };
   const handleRemove = () => {
     setContries((oldCountires) =>
-      oldCountires.filter((c) => c.name != country.name)
+      oldCountires.filter((c) => c.name !== country.name)
     );
   };
   return (
