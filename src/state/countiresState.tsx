@@ -1,4 +1,7 @@
 import { atom } from 'recoil';
+import { recoilPersist } from 'recoil-persist';
+
+const { persistAtom } = recoilPersist();
 
 export enum eCountryStatus {
   TO_VISIT = 'toVisit',
@@ -14,4 +17,5 @@ export interface ICountry {
 export const countiresState = atom<ICountry[]>({
   key: 'countires',
   default: [],
+  effects_UNSTABLE: [persistAtom],
 });

@@ -24,7 +24,7 @@ export default function CountryItem({ country }: ICountryItem) {
     );
   };
   return (
-    <li key={country.name}>
+    <>
       <span>{country.name}</span>
       {country.status === eCountryStatus.TO_VISIT && (
         <>
@@ -51,6 +51,6 @@ export default function CountryItem({ country }: ICountryItem) {
           </button>
         </>
       )}
-    </li>
+    </>
   );
 }
