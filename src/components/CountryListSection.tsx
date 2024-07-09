@@ -1,11 +1,32 @@
+import { useRecoilValue } from 'recoil';
+import {
+  ICountry,
+  countiresState,
+  eCountryStatus,
+} from '../state/countiresState';
 import CountryItem from './CountryItem';
 
-export default function CountryListSection() {
+interface ICountryListSection {
+  title: string;
+  status: eCountryStatus;
+}
+
+export default function CountryListSection({
+  title,
+  status,
+}: ICountryListSection) {
+  const countries = useRecoilValue(countiresState);
   return (
     <section>
-      <h2>내가 가본 나라들</h2>
+      <h2>{title}</h2>
       <ul>
-        <CountryItem />
+        {countries
+          .filter((country) => country.status !== status)
+          .map((country: ICountry) => (
+            <li key={country.name}>
+              <CountryItem country={country} />
+            </li>
+          ))}
       </ul>
     </section>
   );
