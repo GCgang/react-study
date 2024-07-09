@@ -7,7 +7,7 @@ export enum eCountryStatus {
 }
 
 export interface ICountry {
-  country: string;
+  name: string;
   status: eCountryStatus;
 }
 

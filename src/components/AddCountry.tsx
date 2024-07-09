@@ -21,10 +21,9 @@ export default function AddCountry() {
 
   const onSubmit = (data: IForm) => {
     const newCountry: ICountry = {
-      country: data.country,
+      name: data.country,
       status: eCountryStatus.TO_VISIT,
     };
-    console.log(newCountry);
     setCountries((oldContries) => [...oldContries, newCountry]);
     setValue('country', '');
   };
