@@ -16,6 +16,7 @@
     "react-scripts": "5.0.1",
     "recoil": "^0.7.7",
     "recoil-persist": "^5.1.0",
+    "styled-components": "^6.1.11",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"
   },
@@ -42,5 +43,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }

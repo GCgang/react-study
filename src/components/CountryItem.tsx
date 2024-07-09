@@ -2,8 +2,8 @@ import {
   countiresState,
   eCountryStatus,
   ICountry,
-} from '../state/countiresState';
-import { useSetRecoilState } from 'recoil';
+} from "../state/countiresState";
+import { useSetRecoilState } from "recoil";
 
 interface ICountryItem {
   country: ICountry;
@@ -29,25 +29,25 @@ export default function CountryItem({ country }: ICountryItem) {
       {country.status === eCountryStatus.TO_VISIT && (
         <>
           <button onClick={() => handleStatusChange(eCountryStatus.VISITED)}>
-            가본 나라로 이동
+            ✅
           </button>
-          <button onClick={handleRemove}>제거</button>
+          <button onClick={handleRemove}>🗑️</button>
         </>
       )}
       {country.status === eCountryStatus.VISITED && (
         <>
-          <button onClick={() => handleStatusChange(eCountryStatus.TO_VISIT)}>
-            가고싶은 나나로 이동
-          </button>
           <button onClick={() => handleStatusChange(eCountryStatus.FAVORITE)}>
-            좋아하는 나라로 이동
+            👍
+          </button>
+          <button onClick={() => handleStatusChange(eCountryStatus.TO_VISIT)}>
+            ❌
           </button>
         </>
       )}
       {country.status === eCountryStatus.FAVORITE && (
         <>
           <button onClick={() => handleStatusChange(eCountryStatus.VISITED)}>
-            가본 나라로 이동
+            👎
           </button>
         </>
       )}
