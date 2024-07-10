@@ -1,41 +1,15 @@
 import { styled } from 'styled-components';
 import { motion } from 'framer-motion';
 
-const bocVariants = {
-  start: { opacity: 0, scale: 0 },
-  end: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      type: 'spring',
-      duration: 0.5,
-      bounce: 0.5,
-      delayChildren: 0.5,
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const circleVariants = {
-  start: {
-    opacity: 0,
-    y: 10,
-  },
-  end: {
-    opacity: 1,
-    y: 0,
-  },
-};
+const bocVariants = {};
 
 function App() {
   return (
     <Wrapper>
-      <Box variants={bocVariants} initial="start" animate="end">
-        <Circle variants={circleVariants} />
-        <Circle variants={circleVariants} />
-        <Circle variants={circleVariants} />
-        <Circle variants={circleVariants} />
-      </Box>
+      <Box
+        whileHover={{ scale: 1.5, rotate: 90 }}
+        whileTap={{ scale: 1, rotate: 90, borderRadius: '100%' }}
+      />
     </Wrapper>
   );
 }
@@ -53,18 +27,7 @@ const Wrapper = styled.div`
 const Box = styled(motion.div)`
   width: 200px;
   height: 200px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 1);
   border-radius: 40px;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
-`;
-
-const Circle = styled(motion.div)`
-  background-color: white;
-  border-radius: 35px;
-  height: 70px;
-  width: 70px;
-  place-self: center;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
 `;
