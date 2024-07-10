@@ -1,14 +1,19 @@
 import { styled } from 'styled-components';
 import { motion } from 'framer-motion';
 
+const myVariants = {
+  start: { scale: 0 },
+  end: {
+    rotate: 180,
+    scale: 1,
+    transition: { type: 'spring', stiffness: 260, damping: 20, delay: 0.5 },
+  },
+};
+
 function App() {
   return (
     <Wrapper>
-      <Box
-        initial={{ scale: 0 }}
-        animate={{ rotate: 180, scale: 1 }}
-        transition={{ type: 'spring', stiffness: 260, damping: 20, delay: 0.5 }}
-      />
+      <Box variants={myVariants} initial="start" animate="end" />
     </Wrapper>
   );
 }
