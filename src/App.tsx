@@ -1,15 +1,15 @@
 import { styled } from 'styled-components';
 import { motion } from 'framer-motion';
 
-const bocVariants = {};
+const boxVariants = {
+  hover: { scale: 1.5, rotate: 90 },
+  click: { scale: 1, rotate: 90, borderRadius: '100%' },
+};
 
 function App() {
   return (
     <Wrapper>
-      <Box
-        whileHover={{ scale: 1.5, rotate: 90 }}
-        whileTap={{ scale: 1, rotate: 90, borderRadius: '100%' }}
-      />
+      <Box variants={boxVariants} whileHover="hover" whileTap="click" />
     </Wrapper>
   );
 }
