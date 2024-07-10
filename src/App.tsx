@@ -1,31 +1,48 @@
 import { styled } from 'styled-components';
 import { motion } from 'framer-motion';
+import { useRef } from 'react';
 
 const boxVariants = {
-  hover: { scale: 1.5, rotate: 90 },
-  click: { scale: 1, rotate: 90, borderRadius: '100%' },
-  drag: { backgroundColor: 'rgb(46, 204, 113)', transition: { duration: 2 } },
+  hover: { rotate: 90 },
+  click: { borderRadius: '100%' },
 };
 
 function App() {
+  const biggerBoxRef = useRef<HTMLDivElement>(null);
   return (
     <Wrapper>
-      <Box
-        drag
-        variants={boxVariants}
-        whileHover="hover"
-        whileTap="click"
-        whileDrag="drag"
-      />
+      <BiggerBox ref={biggerBoxRef}>
+        <Box
+          drag
+          dragConstraints={biggerBoxRef}
+          // dragSnapToOrigin
+          dragElastic={0.5}
+          variants={boxVariants}
+          whileHover="hover"
+          whileTap="click"
+        />
+      </BiggerBox>
     </Wrapper>
   );
 }
+
+// constraint
 
 export default App;
 
 const Wrapper = styled.div`
   height: 100vh;
   width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const BiggerBox = styled(motion.div)`
+  width: 600px;
+  height: 600px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
