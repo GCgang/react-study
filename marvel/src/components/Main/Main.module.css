@@ -1,0 +1,21 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #202020;
+  background-size: cover;
+  background-position: center;
+  padding-top: 100px;
+}
+
+.main__contents {
+  color: white;
+}
+
+.main__title {
+  font-size: 2.5rem;
+}
+
+.main__contents {
+  font-size: 1rem;
+}

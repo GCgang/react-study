@@ -1,0 +1,13 @@
+.header {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  background-color: transparent;
+  top: 0;
+  z-index: 1000;
+}
+
+.header__logo__img {
+  height: 100px;
+}

@@ -1,0 +1,13 @@
+.homeMain {
+  height: 30vh;
+  text-align: center;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  gap: 10px;
+  list-style-type: none;
+}
